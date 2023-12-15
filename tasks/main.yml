@@ -1,2 +1,9 @@
 ---
 # tasks file for ansible-role-add-cname
+
+- name: Add CName to domain host server
+  include_tasks: addCnames.yml
+  with_items: '{{ host_cnames }}'
+  loop_control:
+    loop_var: cname
+    label: '{{ cname.host_fqdn }}'

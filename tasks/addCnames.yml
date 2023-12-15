@@ -1,0 +1,5 @@
+---
+- name: Add CName to domain host server
+  win_shell: |
+    Add-DnsServerResourceRecordCName -Name {{ item }}  -HostNameAlias {{ cname.host_fqdn}} -ZoneName {{ cname.zoneName }}
+  loop: '{{cname.cname_url_names}}'
